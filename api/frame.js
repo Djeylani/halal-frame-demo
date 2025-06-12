@@ -37,7 +37,7 @@ export default async function handler(req, res) {
     <meta property="og:title" content="${nextFrame.title}">
     <meta property="og:image" content="${nextFrame.images}">
     <meta property="fc:frame:post_url" content="https://your-vercel-app.com/api/frame?page=${nextPage}">
-    <meta property="fr:frame:button1" content="${nextPage < totalPages ? 'Next ➡️' : 'Restart 🔄'}">
+    <meta property="fc:frame:button1" content="${nextPage < totalPages ? 'Next ➡️' : 'Restart 🔄'}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
         <style>
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
     `;
     const finalHtml = html.replace(
       'https://your-vercel-app.com',
-      process.env.VERCEL_URL || 'https://your-vercel-app.vercel.app'
+      'https://halal-frame-demo.vercel.app'
     );
 
     res.setHeader('Content-Type', 'text/html');
