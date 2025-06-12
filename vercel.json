@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/frame", "destination": "/api/frame.js" },
+    { "source": "/(.*)", "destination": "/public/index.html" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "halal-frame-demo",
+  "version": "1.0.0",
+  "description": "Simple Farcaster Frame Demo",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "^28.0.0"
+  }
+}
