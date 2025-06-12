@@ -4,11 +4,12 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Validate the frame message data
-        const { untrustedData, trustedData } = req.body;
+        // Extract and validate the frame message data
+        const body = req.body;
+        const buttonId = body?.untrustedData?.buttonIndex ?? 1;
         
         // Get the current page from the validated message data
-        const currentPage = parseInt(untrustedData?.buttonIndex || 1, 10);
+        const currentPage = parseInt(buttonId, 10);
         const totalPages = 3;
         const nextPage = currentPage < totalPages ? currentPage + 1 : 1;
 
@@ -37,13 +38,12 @@ export default async function handler(req, res) {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
         
         const html = `<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta property="fc:frame" content="vNext">
-    <meta property="fc:frame:image" content="${nextFrame.images}">
-    <meta property="fc:frame:button:1" content="${nextPage < totalPages ? 'Next ➡️' : 'Restart 🔄'}">
-    <meta property="fc:frame:post_url" content="https://halal-frame-demo.vercel.app/api/frame?page=${nextPage}">
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="${nextFrame.images}" />
+    <meta property="fc:frame:button:1" content="${nextPage < totalPages ? 'Next ➡️' : 'Restart 🔄'}" />
+    <meta property="fc:frame:post_url" content="https://halal-frame-demo.vercel.app/api/frame" />
 </head>
 </html>`;
 
